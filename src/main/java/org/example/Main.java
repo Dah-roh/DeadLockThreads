@@ -14,7 +14,7 @@ public class Main{
 
     public static void main(String[] args) throws InterruptedException {
 
-        Runnable runOne =()->{
+        Runnable queueLine1 =()->{
             for (int i = 0; i < 150; i++) {
                 increment.apply();
             }
@@ -25,7 +25,7 @@ public class Main{
                 increment.apply();
             }
         });
-        Thread threadOne = new Thread(runOne);
+        Thread threadOne = new Thread(queueLine1);
         Thread threadThree = new Thread(()->{
             for (int i = 0; i < 150; i++) {
                 increment.apply();
