@@ -72,8 +72,8 @@ public class HttpServ {
                         "</head>\n" +
                         "<body>\n" +
                         "<h1> 404 Page Not Found</h1>\n" +
-                        "<a href = "+"localhost"+":8085/about-us>About Us</a>\n"+
-                        "<a href = "+"localhost"+":8085/>Home page</a>\n"+
+                        "<a href = "+"/about-us>About Us</a>\n"+
+                        "<a href = "+"/>Home page</a>\n"+
                         "</body>\n" +
                         "</html>";
             }
