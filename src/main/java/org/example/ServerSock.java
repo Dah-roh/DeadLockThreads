@@ -10,12 +10,12 @@ public class ServerSock {
         ServerSocket serverSocket = new ServerSocket(8085);
         Socket socket = serverSocket.accept();
         System.out.println("Client connected!");
+        BufferedReader bufferedReader = new BufferedReader(
+                new InputStreamReader(socket.getInputStream()));
+        OutputStream outputStream = socket.getOutputStream();
+        String message;
+        String outPutMessage;
        try {
-           BufferedReader bufferedReader = new BufferedReader(
-                   new InputStreamReader(socket.getInputStream()));
-           OutputStream outputStream = socket.getOutputStream();
-           String message;
-           String outPutMessage;
            while (true) {
                message = bufferedReader.readLine();
                System.out.println(message);
@@ -33,11 +33,10 @@ public class ServerSock {
 
                outPutMessage = "HTTP/1.1 200 OK\r\n" +
                        "Content-type: text/html\r\n" +
-                       "Content-length:"+response.length()+"\r\n"+
+                       "Content-length:"+response.length()+1+"\r\n"+
                        "\r\n"+
                        response;
                outputStream.write(outPutMessage.getBytes(StandardCharsets.UTF_8));
-               outputStream.flush();
            }
        } catch (IOException e) {
            throw new RuntimeException(e);
